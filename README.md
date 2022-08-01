@@ -1,16 +1,11 @@
 # save_it
 
-A new Flutter project.
+## What is Save it?
 
-## Getting Started
+  Save it is a mobile application created to save your saving and distributing your savings.
 
-This project is a starting point for a Flutter application.
+## How to install on your local development?
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  1. clone the repository
+  2. run `flutter pub get`
+  3. run `flutter run`
