@@ -9,7 +9,7 @@ final ThemeData lightTheme = ThemeData(
   colorScheme: const ColorScheme.light(
     background: background,
     primary: Color(0xFF694E4E),
-    onPrimary: Color(0xFF694E4E),
+    onPrimary: Color.fromARGB(255, 209, 159, 159),
     secondary: Color(0xFFC1A3A3),
     onSecondary: Color(0xFF662300),
     surface: Color(0xFFF5F5F5),
@@ -91,7 +91,7 @@ final ThemeData darkTheme = ThemeData.dark().copyWith(
   visualDensity: VisualDensity.adaptivePlatformDensity,
   colorScheme: const ColorScheme.dark(
     primary: Color(0xFF694E4E),
-    onPrimary: Color(0xFF694E4E),
+    onPrimary: Color.fromARGB(255, 209, 159, 159),
     secondary: Color(0xFFC1A3A3),
     onSecondary: Color(0xFF662300),
     surface: Color(0xFFF5F5F5),
