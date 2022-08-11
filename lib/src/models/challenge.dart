@@ -40,6 +40,9 @@ class Challenge extends HiveObject {
   @HiveField(12)
   List<Deposit> deposits;
 
+  @HiveField(13)
+  bool? isSync;
+
   Challenge({
     required this.id,
     required this.title,
@@ -53,6 +56,7 @@ class Challenge extends HiveObject {
     this.description,
     this.dateUpdated,
     this.deposits = const [],
+    this.isSync = false,
   });
 
   // copy with
@@ -113,4 +117,44 @@ class Challenge extends HiveObject {
 
   UnmodifiableListView<Deposit> get depositsView =>
       UnmodifiableListView(deposits.reversed);
+
+  // Json serialization to Map
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'iconCode': iconCode,
+      'total': total,
+      'dateCreated': dateCreated.toIso8601String(),
+      'dateUpdated': dateUpdated?.toIso8601String(),
+      'startDate': startDate.toIso8601String(),
+      'endDate': endDate.toIso8601String(),
+      'frequency': frequency,
+      'deposits': deposits.map((deposit) => deposit.toMap()).toList(),
+      'isSync': isSync,
+    };
+  }
+
+  // factory to  map
+  factory Challenge.fromMap(Map<String, dynamic> map) {
+    return Challenge(
+      id: map['id'],
+      title: map['title'],
+      description: map['description'],
+      iconCode: map['iconCode'],
+      total: map['total'],
+      dateCreated: DateTime.parse(map['dateCreated']),
+      dateUpdated: map['dateUpdated'] != null
+          ? DateTime.parse(map['dateUpdated'])
+          : null,
+      startDate: DateTime.parse(map['startDate']),
+      endDate: DateTime.parse(map['endDate']),
+      frequency: map['frequency'],
+      deposits: List<Deposit>.from(
+        map['deposits'].map((deposit) => Deposit.fromMap(deposit)),
+      ),
+      isSync: map['isSync'],
+    );
+  }
 }

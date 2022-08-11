@@ -14,11 +14,11 @@ class BottomNavBar extends StatelessWidget {
         rippleColor: Colors.grey[300]!,
         hoverColor: Colors.grey[100]!,
         gap: 8,
-        activeColor: Theme.of(context).colorScheme.primary,
+        activeColor: Colors.white70,
         iconSize: 35,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         duration: const Duration(milliseconds: 400),
-        tabBackgroundColor: Colors.black.withOpacity(0.05),
+        tabBackgroundColor: Theme.of(context).colorScheme.primary,
         color: Theme.of(context).colorScheme.primary,
         selectedIndex: context.watch<BottomNavProvider>().currentIndex,
         tabs: const [

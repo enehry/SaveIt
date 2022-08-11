@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:save_it/src/models/challenge.dart';
 import 'package:save_it/src/utils/constant.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -58,7 +60,29 @@ class AuthProvider with ChangeNotifier {
     if (FirebaseAuth.instance.currentUser != null) {
       _isSignedIn = true;
       _isLoading = false;
+      syncDataFromFirebase(FirebaseAuth.instance.currentUser!.email);
       notifyListeners();
+    }
+  }
+
+  void syncDataFromFirebase(email) async {
+    final firestore = FirebaseFirestore.instance;
+    // fetch all data from user email
+    final snapshot = await firestore
+        .collection('users')
+        .doc(email)
+        .collection('challenges')
+        .get();
+    List<Challenge> data =
+        snapshot.docs.map((doc) => Challenge.fromMap(doc.data())).toList();
+
+    // populate box challenges
+    final box = Hive.box<Challenge>(kChallengeBox);
+
+    for (var element in data) {
+      if (!box.containsKey(element.id)) {
+        box.put(element.id, element);
+      }
     }
   }
 
@@ -72,7 +96,11 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future signOut() async => await FirebaseAuth.instance.signOut();
+  Future signOut() async {
+    await FirebaseAuth.instance.signOut();
+    _isSignedIn = false;
+    notifyListeners();
+  }
 
   Stream<User?> get userStream => FirebaseAuth.instance.userChanges();
 

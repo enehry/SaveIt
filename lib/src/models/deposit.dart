@@ -37,4 +37,22 @@ class Deposit extends HiveObject {
 
   @override
   toString() => 'Deposit(id: $id, amount: $amount, createdAt: $createdAt)';
+
+  //  to Map
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'amount': amount,
+      'createdAt': createdAt.toIso8601String(),
+    };
+  }
+
+  // from Map
+  factory Deposit.fromMap(Map<String, dynamic> map) {
+    return Deposit(
+      id: map['id'],
+      amount: map['amount'],
+      createdAt: DateTime.parse(map['createdAt']),
+    );
+  }
 }

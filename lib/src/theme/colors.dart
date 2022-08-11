@@ -40,3 +40,10 @@ const darkBackground = Color.fromARGB(255, 27, 27, 27);
 
 // icon colors
 const darkIcon = Color.fromARGB(255, 65, 65, 65);
+
+
+// #FF2519
+// #B31209
+// #00B2A9
+// #FFA819
+// #B37209

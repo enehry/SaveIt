@@ -45,14 +45,14 @@ class _ChallengeRowState extends State<ChallengeRow> {
     // calculate the percent of the challenge completed
     double percentCompleted() => depositAmount() / widget.challenge.total;
 
-    final double width = MediaQuery.of(context).size.width - 112;
+    final double width = MediaQuery.of(context).size.width - 92;
 
     double getWidth() => (width * percentCompleted()) > width
         ? width
         : width * percentCompleted();
 
     return Padding(
-      padding: const EdgeInsets.only(left: 20.0, bottom: 10.0, top: 10.0),
+      padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
       child: Slidable(
         endActionPane: ActionPane(
           extentRatio: 0.2,

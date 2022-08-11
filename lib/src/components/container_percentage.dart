@@ -19,11 +19,21 @@ class _ContainerPercentageState extends State<ContainerPercentage> {
   @override
   void initState() {
     super.initState();
+    // check if mounted in order to avoid calling setState() on a disposed widget
+
     Future.delayed(const Duration(milliseconds: 250), () {
-      setState(() {
-        _visited = true;
-      });
+      if (mounted) {
+        setState(() {
+          _visited = true;
+        });
+      }
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    // dispose the animation container
   }
 
   @override
@@ -31,19 +41,24 @@ class _ContainerPercentageState extends State<ContainerPercentage> {
     return Stack(
       children: [
         // center text
-        Row(
+        Stack(
           children: [
+            Container(
+              height: 20.0,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
             AnimatedContainer(
               duration: const Duration(milliseconds: 250),
               width: _visited ? widget.width : 0.0,
-              color: Theme.of(context).colorScheme.primary,
               height: 20.0,
               curve: Curves.easeIn,
-            ),
-            Expanded(
-              child: Container(
-                height: 20.0,
-                color: Colors.black38,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
           ],

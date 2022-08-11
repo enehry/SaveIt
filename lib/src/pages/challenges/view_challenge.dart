@@ -35,7 +35,8 @@ class ViewChallenge extends StatelessWidget {
       }
 
       // calculate the day till finish
-      int daysTillFinish = challenge.endDate.difference(DateTime.now()).inDays;
+      int daysTillFinish =
+          challenge.endDate.difference(DateTime.now()).inDays + 1;
 
       // calculate the percent of the challenge completed
       double containerWidth = (width * challenge.percentCompleted()) > width
@@ -157,7 +158,7 @@ class ViewChallenge extends StatelessWidget {
                         primary: Theme.of(context).colorScheme.primary,
                         side: BorderSide.none,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(0.0),
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                         elevation: 0.0,
                         shadowColor: Colors.transparent,
@@ -265,7 +266,7 @@ class ViewChallenge extends StatelessWidget {
                         primary: Theme.of(context).colorScheme.primary,
                         side: BorderSide.none,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(0.0),
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                         elevation: 0.0,
                         shadowColor: Colors.transparent,
@@ -364,7 +365,7 @@ class ViewChallenge extends StatelessWidget {
                       primary: Theme.of(context).colorScheme.primary,
                       side: BorderSide.none,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0.0),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
                       elevation: 0.0,
                       shadowColor: Colors.transparent,

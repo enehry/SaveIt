@@ -8,38 +8,48 @@ final ThemeData lightTheme = ThemeData(
   visualDensity: VisualDensity.adaptivePlatformDensity,
   colorScheme: const ColorScheme.light(
     background: background,
-    primary: primary,
-    onPrimary: background,
-    secondary: secondaryButton,
+    primary: Color(0xFF694E4E),
+    onPrimary: Color(0xFF694E4E),
+    secondary: Color(0xFFC1A3A3),
+    onSecondary: Color(0xFF662300),
+    surface: Color(0xFFF5F5F5),
+    onSurface: Color(0xFF000000),
+    tertiary: Color(0xFFF3C5C5),
   ),
   buttonTheme: const ButtonThemeData(
     buttonColor: Color(0xFFD9D9D9),
     textTheme: ButtonTextTheme.accent,
   ),
   textTheme: const TextTheme(
+    headline1: TextStyle(
+      fontFamily: kFont,
+      fontSize: 38,
+      fontWeight: FontWeight.w600,
+      color: Color(0xFF694E4E),
+    ),
     headline2: TextStyle(
       fontSize: 32,
       fontWeight: FontWeight.w500,
       fontFamily: kFont,
-      color: textHeader,
+      color: Color(0xFF694E4E),
     ),
     headline3: TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.w200,
       fontFamily: kFont,
-      color: textHeader,
+      // color: Color(0xFFB31209),
     ),
     headline4: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w500,
       fontFamily: kFont,
-      color: textHeader,
+      // color: Color(0xFFB31209),
     ),
     headline5: TextStyle(
       fontSize: 16,
       fontFamily: kFont,
       fontWeight: FontWeight.normal,
-      color: textImportant,
+      // color: Color(0xFFB31209),
     ),
     headline6: TextStyle(
       fontSize: 16,
@@ -49,17 +59,17 @@ final ThemeData lightTheme = ThemeData(
     ),
     bodyText1: TextStyle(
       fontSize: 16,
-      color: textBody,
+      // color: Color(0xFFB33D00),
       fontFamily: kFont,
     ),
     bodyText2: TextStyle(
       fontSize: 14,
-      color: textImportant,
+      // color: Color(0xFFB33D00),
       fontFamily: kFont,
     ),
     subtitle1: TextStyle(
       fontSize: 14,
-      color: textSubtitle,
+      color: Colors.grey,
       fontWeight: FontWeight.w500,
       fontFamily: kFont,
     ),
@@ -70,7 +80,7 @@ final ThemeData lightTheme = ThemeData(
     ),
     button: TextStyle(
       fontSize: 14,
-      color: Colors.white70,
+      color: Colors.white,
       fontFamily: kFont,
     ),
   ),
@@ -80,16 +90,25 @@ final ThemeData lightTheme = ThemeData(
 final ThemeData darkTheme = ThemeData.dark().copyWith(
   visualDensity: VisualDensity.adaptivePlatformDensity,
   colorScheme: const ColorScheme.dark(
-    background: darkBackground,
-    primary: darkPrimary,
-    secondary: darkSecondaryButton,
-    onPrimary: textHeader,
+    primary: Color(0xFF694E4E),
+    onPrimary: Color(0xFF694E4E),
+    secondary: Color(0xFFC1A3A3),
+    onSecondary: Color(0xFF662300),
+    surface: Color(0xFFF5F5F5),
+    onSurface: Color(0xFF000000),
+    tertiary: Color(0xFFF3C5C5),
   ),
   buttonTheme: const ButtonThemeData(
     buttonColor: darkPrimary,
     textTheme: ButtonTextTheme.primary,
   ),
   textTheme: const TextTheme(
+    headline1: TextStyle(
+      fontFamily: kFont,
+      fontSize: 38,
+      fontWeight: FontWeight.w600,
+      color: Color(0xFF694E4E),
+    ),
     headline2: TextStyle(
       fontSize: 32,
       color: darkTextHeader,

@@ -137,23 +137,41 @@ class _SavingsAllocationState extends State<SavingsAllocation> {
                         vertical: 10.0,
                       ),
                       width: double.infinity,
-                      height: 100.0,
-                      color: Colors.black54,
+                      height: 120.0,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
                       child: Center(
                         child: provider.monthlyIncome != 0.0
-                            ? Text(
-                                formatter.format(provider.monthlyIncome),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline2!
-                                    .copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                            ? Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    formatter.format(provider.monthlyIncome),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline1!
+                                        .copyWith(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                  Text(
+                                    'My monthly income',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .copyWith(color: Colors.white70),
+                                  ),
+                                ],
                               )
                             : Text(
                                 'Enter a monthly income',
-                                style: Theme.of(context).textTheme.caption,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .caption!
+                                    .copyWith(color: Colors.white70),
                               ),
                       ),
                     ),
@@ -170,22 +188,22 @@ class _SavingsAllocationState extends State<SavingsAllocation> {
                     Container(
                       width: width * (provider.needsPercentage / 100),
                       height: 60.0,
-                      color: Colors.black87,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                     Container(
                       width: width * (provider.savingsPercentage / 100),
                       height: 60.0,
-                      color: Colors.black54,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
                     Container(
                       width: width * (provider.wantsPercentage / 100),
                       height: 60.0,
-                      color: Colors.black45,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                     Container(
                       width: width * (provider.othersPercentage / 100),
                       height: 60.0,
-                      color: Colors.black38,
+                      color: Theme.of(context).colorScheme.tertiary,
                     ),
                   ]),
                   const SizedBox(height: 30.0),
@@ -196,7 +214,7 @@ class _SavingsAllocationState extends State<SavingsAllocation> {
                   const SizedBox(height: 10.0),
                   SavingsTextField(
                     label: 'Needs:',
-                    color: Colors.black87,
+                    color: Theme.of(context).colorScheme.primary,
                     value: provider.needs.toString(),
                     percentController: _needsController,
                     onPercentageChanged: ((p0) =>
@@ -207,7 +225,7 @@ class _SavingsAllocationState extends State<SavingsAllocation> {
                   SavingsTextField(
                     label: 'Savings:',
                     percentController: _savingsController,
-                    color: Colors.black54,
+                    color: Theme.of(context).colorScheme.tertiary,
                     value: provider.savings.toString(),
                     onPercentageChanged: ((p0) =>
                         provider.setSavingsPercentage(p0)),
@@ -217,7 +235,7 @@ class _SavingsAllocationState extends State<SavingsAllocation> {
                   SavingsTextField(
                     label: 'Wants:',
                     percentController: _wantsController,
-                    color: Colors.black45,
+                    color: Theme.of(context).colorScheme.secondary,
                     value: provider.wants.toString(),
                     onPercentageChanged: ((p0) =>
                         provider.setWantsPercentage(p0)),
@@ -227,7 +245,7 @@ class _SavingsAllocationState extends State<SavingsAllocation> {
                   SavingsTextField(
                     label: 'Others:',
                     percentController: _othersController,
-                    color: Colors.black38,
+                    color: Theme.of(context).colorScheme.onSecondary,
                     value: provider.others.toString(),
                     onPercentageChanged: ((p0) =>
                         provider.setOthersPercentage(p0)),

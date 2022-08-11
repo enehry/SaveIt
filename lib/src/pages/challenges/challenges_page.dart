@@ -73,84 +73,100 @@ class _ChallengesPageState extends State<ChallengesPage> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: SizedBox(
-                              height: 100.0,
-                              child: Column(
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: SizedBox(
+                            height: 100.0,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
+                                    child: Text(
+                                      hCurrency(sum),
+                                      style:
+                                          Theme.of(context).textTheme.headline1,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 5.0),
+                                Text(
+                                  'Deposits',
+                                  style: Theme.of(context).textTheme.caption,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16.0),
+                        Expanded(
+                          flex: 1,
+                          child: SizedBox(
+                            height: 100.0,
+                            child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    hCurrency(sum),
-                                    style:
-                                        Theme.of(context).textTheme.headline2,
-                                  ),
-                                  Text(
-                                    'Deposits',
-                                    style: Theme.of(context).textTheme.caption,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 16.0),
-                          Expanded(
-                            flex: 1,
-                            child: SizedBox(
-                              height: 100.0,
-                              child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20.0,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
+                                    child: Text(
                                       box.values.length.toString(),
                                       style:
-                                          Theme.of(context).textTheme.headline2,
+                                          Theme.of(context).textTheme.headline1,
                                     ),
-                                    Text(
-                                      'Challenges',
-                                      style:
-                                          Theme.of(context).textTheme.caption,
-                                    ),
-                                  ]),
-                            ),
+                                  ),
+                                  const SizedBox(height: 5.0),
+                                  Text(
+                                    'Challenges',
+                                    style: Theme.of(context).textTheme.caption,
+                                  ),
+                                ]),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 20),
                     // search bar
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: TextField(
-                        onChanged: (value) => setState(() => filter = value),
-                        decoration: InputDecoration(
-                          suffixIcon: const Icon(
-                            Icons.search,
-                            size: 30.0,
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          isDense: true,
-                          hintText: 'Search a challenge...',
-                          hintStyle: Theme.of(context).textTheme.caption,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
+                    TextField(
+                      onChanged: (value) => setState(() => filter = value),
+                      decoration: InputDecoration(
+                        suffixIcon: const Icon(
+                          Icons.search,
+                          size: 30.0,
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 15),
+                        isDense: true,
+                        hintText: 'Search a challenge...',
+                        hintStyle: Theme.of(context).textTheme.caption,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 20.0,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: Text('List of challenges',
-                          style: Theme.of(context).textTheme.caption),
-                    ),
+                    Text('List of challenges',
+                        style: Theme.of(context).textTheme.caption),
                     Expanded(
                       child: challenges.isEmpty
                           ? const Empty(
@@ -217,7 +233,7 @@ class _ChallengesPageState extends State<ChallengesPage> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         child: const Icon(
           Icons.add,
-          color: Colors.white60,
+          color: Colors.white70,
           size: 35.0,
         ),
       ),

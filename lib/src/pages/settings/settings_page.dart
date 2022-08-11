@@ -144,11 +144,11 @@ class SettingsPage extends StatelessWidget {
             }
             return ListTile(
               onTap: () {
-                // show dialog to ask if user really wants to logout
+                // show dialog to ask if you want to sign in
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    content: const Text('Are you sure you want to logout?'),
+                    content: const Text('Are you sure you want to sign in?'),
                     actions: [
                       TextButton(
                         child: const Text('Cancel'),

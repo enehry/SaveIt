@@ -8,5 +8,8 @@ import 'package:save_it/src/controller/savings_allocation_provider.dart';
 final List<SingleChildWidget> providers = [
   ChangeNotifierProvider(create: (_) => BottomNavProvider()),
   ChangeNotifierProvider(create: (_) => SavingsAllocationProvider()),
-  ChangeNotifierProvider(create: (_) => ChallengesProvider()),
+  ChangeNotifierProvider(
+    create: (_) => ChallengesProvider(),
+    lazy: false,
+  ),
 ];

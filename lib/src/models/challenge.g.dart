@@ -28,13 +28,14 @@ class ChallengesAdapter extends TypeAdapter<Challenge> {
       description: fields[2] as String?,
       dateUpdated: fields[8] as DateTime?,
       deposits: (fields[12] as List).cast<Deposit>(),
+      isSync: fields[13] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Challenge obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -56,7 +57,9 @@ class ChallengesAdapter extends TypeAdapter<Challenge> {
       ..writeByte(11)
       ..write(obj.frequency)
       ..writeByte(12)
-      ..write(obj.deposits);
+      ..write(obj.deposits)
+      ..writeByte(13)
+      ..write(obj.isSync);
   }
 
   @override
