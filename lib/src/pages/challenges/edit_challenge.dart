@@ -26,6 +26,7 @@ class _EditChallengeState extends State<EditChallenge> {
   final _totalAmountController = TextEditingController();
   String _frequency = 'Daily';
   String _amountPerFrequency = "0.00";
+  late int _icon;
 
   void onSave() {
     if (_formKey.currentState != null) {
@@ -49,6 +50,7 @@ class _EditChallengeState extends State<EditChallenge> {
         challenge.startDate = DateFormat.yMd().parse(startDate);
         challenge.endDate = DateFormat.yMd().parse(endDate);
         challenge.frequency = frequency;
+        challenge.iconCode = _icon;
 
         provider.updateChallenge(challenge);
 
@@ -75,6 +77,7 @@ class _EditChallengeState extends State<EditChallenge> {
     // initialize data from challenge provider
     final provider = Provider.of<ChallengesProvider>(context, listen: false);
     challenge = provider.challenge!;
+    _icon = challenge.iconCode;
 
     // get the challenge to edit
 
@@ -100,6 +103,52 @@ class _EditChallengeState extends State<EditChallenge> {
 
     super.initState();
   }
+
+  final appIcons = [
+    Icons.savings,
+    Icons.home_outlined,
+    Icons.work_outlined,
+    Icons.school_outlined,
+    Icons.shopping_cart_outlined,
+    Icons.local_atm_outlined,
+    Icons.local_drink_outlined,
+    Icons.local_gas_station_outlined,
+    Icons.local_hospital_outlined,
+    Icons.local_pharmacy_outlined,
+    Icons.local_shipping_outlined,
+    Icons.local_taxi_outlined,
+    Icons.local_dining_outlined,
+    Icons.local_activity_outlined,
+    Icons.local_bar_outlined,
+    Icons.local_cafe_outlined,
+    Icons.local_convenience_store_outlined,
+    Icons.local_drink_outlined,
+    Icons.local_florist_outlined,
+    Icons.local_grocery_store_outlined,
+    Icons.local_hospital_outlined,
+    Icons.local_laundry_service_outlined,
+    Icons.local_library_outlined,
+    Icons.local_mall_outlined,
+    Icons.local_movies_outlined,
+    Icons.local_offer_outlined,
+    Icons.local_parking_outlined,
+    Icons.local_pharmacy_outlined,
+    Icons.local_phone_outlined,
+    Icons.local_pizza_outlined,
+    Icons.local_play_outlined,
+    Icons.local_post_office_outlined,
+    Icons.local_printshop_outlined,
+    Icons.local_see_outlined,
+    Icons.local_shipping_outlined,
+    Icons.local_taxi_outlined,
+    Icons.local_activity_outlined,
+    Icons.local_bar_outlined,
+    Icons.local_cafe_outlined,
+    Icons.local_convenience_store_outlined,
+    Icons.local_drink_outlined,
+    Icons.local_florist_outlined,
+    Icons.local_grocery_store_outlined,
+  ];
 
   void amountPerFrequency() {
     int perFrequency = Provider.of<ChallengesProvider>(context, listen: false)
@@ -140,6 +189,68 @@ class _EditChallengeState extends State<EditChallenge> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        // show dialog with gridview 3x3
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Dialog(
+                                child: GridView.count(
+                                  shrinkWrap: true,
+                                  crossAxisCount: 3,
+                                  children: List.generate(
+                                    appIcons.length,
+                                    (index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            _icon = appIcons[index].codePoint;
+                                          });
+                                          Navigator.pop(context);
+                                        },
+                                        child: Icon(
+                                          appIcons[index],
+                                          size: 30.0,
+                                          color:
+                                              _icon == appIcons[index].codePoint
+                                                  ? Theme.of(context)
+                                                      .colorScheme
+                                                      .primary
+                                                  : Theme.of(context)
+                                                      .colorScheme
+                                                      .onPrimary,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              );
+                            });
+                      },
+                      child: Icon(
+                        IconData(
+                          _icon,
+                          fontFamily: 'MaterialIcons',
+                        ),
+                        color: Theme.of(context).colorScheme.primary,
+                        size: 80.0,
+                      ),
+                    ),
+                    const SizedBox(width: 20.0),
+                    Flexible(
+                      child: Text(
+                        'You can change the default icon by click the icon.',
+                        style: Theme.of(context).textTheme.caption,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20.0),
                 CreateTextField(
                   controller: _titleController,
                   label: 'Title',

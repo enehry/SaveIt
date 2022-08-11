@@ -192,7 +192,10 @@ class ChallengesProvider with ChangeNotifier {
             .doc(user.email)
             .collection('challenges')
             .doc(challenge.id);
-        col.update({'isSync': true, 'deposits': challenge.deposits});
+        col.update({
+          'isSync': true,
+          'deposits': challenge.deposits.map((e) => e.toMap()).toList()
+        });
         isSync = true;
       }
     }

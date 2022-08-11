@@ -6,8 +6,9 @@ const String kFont = 'Poppins';
 
 final ThemeData lightTheme = ThemeData(
   visualDensity: VisualDensity.adaptivePlatformDensity,
+  scaffoldBackgroundColor: const Color.fromARGB(255, 255, 250, 250),
   colorScheme: const ColorScheme.light(
-    background: background,
+    background: Color.fromARGB(255, 209, 159, 159),
     primary: Color(0xFF694E4E),
     onPrimary: Color.fromARGB(255, 209, 159, 159),
     secondary: Color(0xFFC1A3A3),
