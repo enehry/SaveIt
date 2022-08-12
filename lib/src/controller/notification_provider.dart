@@ -23,6 +23,21 @@ class NotificationProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  final List<String> quotes = [
+    '"The best way to predict the future is to create it." - Abraham Lincoln',
+    '"The future belongs to those who believe in the beauty of their dreams." - Eleanor Roosevelt',
+    '"The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart." - Helen Keller',
+    '"I have not failed. I\'nve just found 10,000 ways that won\'t work." - Thomas A. Edison',
+    '"The only way to do great work is to love what you do." - Steve Jobs',
+    '"The only way to get the full value of joy is to love what you do." - Frank Lloyd Wright',
+    '"The best way to predict the future is to create it." - Abraham Lincoln',
+    '"The future belongs to those who believe in the beauty of their dreams." - Eleanor Roosevelt',
+    '"The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart." - Helen Keller',
+    '"I have not failed. I\'ve just found 10,000 ways that won\'t work." - Thomas A. Edison',
+    '"The only way to do great work is to love what you do." - Steve Jobs',
+    '"The only way to get the full value of joy is to love what you do." - Frank Lloyd Wright',
+  ];
+
   //
   Future<void> saveITScheduledNotification(int interval) async {
     String localTimeZone =
@@ -32,10 +47,10 @@ class NotificationProvider with ChangeNotifier {
       content: NotificationContent(
         id: Random().nextInt(100),
         channelKey: 'scheduled_channel',
-        title:
-            'Save IT - Scheduled Notification - ${DateTime.now().toString()}',
-        body: 'This is a scheduled notification.',
+        title: 'Save It Quote of The Day',
+        body: quotes[Random().nextInt(quotes.length)],
         notificationLayout: NotificationLayout.BigText,
+        fullScreenIntent: true,
       ),
       // pop up notification every minute
       schedule: NotificationInterval(
