@@ -147,6 +147,7 @@ class ViewChallenge extends StatelessWidget {
                                                 .calculateUpdateAmountPerFrequency()
                                                 .toDouble(),
                                           );
+
                                           Navigator.pop(context);
                                         },
                                       ),

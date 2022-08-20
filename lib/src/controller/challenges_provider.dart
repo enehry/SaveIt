@@ -252,6 +252,7 @@ class ChallengesProvider with ChangeNotifier {
     }
 
     double frequencyCount = 0;
+
     switch (_challenge.frequency) {
       case 'Daily':
         frequencyCount = _challenge.remainingAmount() /
@@ -259,17 +260,19 @@ class ChallengesProvider with ChangeNotifier {
         break;
       case 'Weekly':
         frequencyCount = _challenge.remainingAmount() /
-            (_challenge.endDate.difference(DateTime.now()).inDays + 1 / 7)
+            ((_challenge.endDate.difference(DateTime.now()).inDays + 1) / 7)
                 .ceil();
         break;
       case 'Monthly':
         frequencyCount = _challenge.remainingAmount() /
-            (_challenge.endDate.difference(DateTime.now()).inDays + 1 / 30)
+            ((_challenge.endDate.difference(DateTime.now()).inDays + 1) / 30)
                 .ceil();
+
         break;
       default:
         frequencyCount = 0;
     }
+
     return (frequencyCount.isNaN ||
             frequencyCount.isNegative ||
             frequencyCount.isInfinite)
