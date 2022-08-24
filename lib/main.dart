@@ -25,7 +25,7 @@ void main() async {
   await Firebase.initializeApp();
 
   AwesomeNotifications().initialize(
-    'resource://drawable/res_icon',
+    'resource://drawable/SaveitLOGO',
     [
       NotificationChannel(
         channelKey: 'scheduled_channel',
