@@ -47,7 +47,7 @@ const List<NotificationInterval> kNotificationIntervals = [
     interval: 0,
   ),
   NotificationInterval(
-    title: '1m',
+    title: 'Now',
     interval: 60,
   ),
   NotificationInterval(
