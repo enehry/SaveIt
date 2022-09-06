@@ -55,7 +55,7 @@ class LocalAppBar extends StatelessWidget {
                     bottom: 20.0,
                   ),
                   child: Text(
-                    title!,
+                    title!.toUpperCase(),
                     style: Theme.of(context).textTheme.headline2,
                   ),
                 ),

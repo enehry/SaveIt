@@ -291,7 +291,7 @@ class ViewChallenge extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline5,
                 ),
                 Text(
-                  '$daysTillFinish',
+                  '${daysTillFinish > 0 ? daysTillFinish : 0}',
                   style: Theme.of(context).textTheme.headline4!.copyWith(
                         fontWeight: FontWeight.w700,
                       ),

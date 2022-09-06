@@ -99,7 +99,7 @@ class _ChallengeRowState extends State<ChallengeRow> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.challenge.title,
+                        widget.challenge.title.toUpperCase(),
                         style: Theme.of(context).textTheme.headline5!.copyWith(
                               fontWeight: FontWeight.w600,
                             ),
