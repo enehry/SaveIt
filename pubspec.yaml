@@ -3,7 +3,7 @@ description: Save it is mobile app where you can list your savings.
 
 publish_to: 'University of Rizal System' # Remove this line if you wish to publish to pub.dev
 
-version: 1.2.4+7
+version: 1.2.5+8
 
 environment:
   sdk: ">=2.17.5 <3.0.0"
